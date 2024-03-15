@@ -2,6 +2,7 @@ import SwiftUI
 import CoreBluetooth
 import os
 import CoreLocation
+import SitePointSdk
 
 @main
 /// App container.
@@ -56,6 +57,10 @@ class AppDelegate: NSObject, ObservableObject, UIApplicationDelegate {
     
     func connectedToAnotherDevice(_ peripheral:CBPeripheral) -> Bool {
         return !connectedToCurrentDevice(peripheral) && btManager.connected(peripheral)
+    }
+    
+    func scanStatus(_ peripheral:CBPeripheral) -> ScanStatus? {
+        return btManager.devicesToScanStatus[peripheral]
     }
     
     override init() {
