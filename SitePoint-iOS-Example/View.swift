@@ -34,13 +34,25 @@ struct ContentView: View {
 struct SitePointSection: View {
     @EnvironmentObject var appDelegate: AppDelegate
     @State private var expanded = true
+    @Environment(\.defaultMinListRowHeight) var minRowHeight
     
     var body: some View {
         DisclosureGroup("SitePoints", isExpanded: $expanded) {
             ForEach(appDelegate.peripherals, id: \.self) { peripheral in
-                HStack{
-                    Text(peripheral.name ?? "[Unnamed]")
-                    Spacer()
+                VStack{
+                    DisclosureGroup(peripheral.name ?? "[Unnamed]") {
+                        if let status = appDelegate.scanStatus(peripheral) {
+                            List {
+                                Row("battery", String(format: "%d%%", status.battery))
+                                Row("charging", status.charging)
+                                Row("satellites", status.satellites)
+                            }.frame(minHeight: minRowHeight * 3)
+                                .listStyle(.plain)
+                                .listRowInsets(EdgeInsets())
+                        } else {
+                            Text("Unable to read advertising data")
+                        }
+                    }
                     Button(appDelegate.connectedToCurrentDevice(peripheral) ? "Disconnect" : "Connect", action: {
                         appDelegate.toggleConnection(peripheral)
                     }).buttonStyle(.bordered).disabled(appDelegate.connectedToAnotherDevice(peripheral))
@@ -95,6 +107,7 @@ struct StatusSection: View {
         DisclosureGroup("Status") {
             List {
                 Row("battery", String(format: "%d%%", status.battery))
+                Row("charging", status.charging)
                 Row("iTow", String(format: "%d ms", status.iTow))
                 Row("time", status.time)
                 Row("time (formatted)", Date(timeIntervalSince1970: TimeInterval(status.time)).formatted(date: .numeric, time: .standard))
