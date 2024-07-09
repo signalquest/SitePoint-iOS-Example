@@ -1,14 +1,15 @@
 {
+  "originHash" : "3a3f2035b1450f55d830f890c93928cc43e203fc5def1f6f842ffef5a9ef6a26",
   "pins" : [
     {
       "identity" : "sitepoint-ios-sdk",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/signalquest/SitePoint-iOS-SDK",
       "state" : {
-        "revision" : "5ccd5f9a95f29ca9804eade7c2d1eae549c9c81b",
-        "version" : "1.1.0"
+        "revision" : "41541ce1673d4d72f3e15f63d71d5f9faa4577cc",
+        "version" : "1.2.0"
       }
     }
   ],
-  "version" : 2
+  "version" : 3
 }

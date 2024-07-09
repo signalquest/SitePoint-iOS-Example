@@ -114,7 +114,6 @@ extension SitePointPeripheral: CBPeripheralDelegate {
                     case SitePointPeripheral.rtcmCharacteristicUuid:
                         self.rtcmCharacteristic = characteristic
                     case SitePointPeripheral.messageCharacteristicUuid:
-                        self.messageHandler.messageCharacteristic = characteristic
                         peripheral.setNotifyValue(true, for: characteristic)
                     default:
                         SitePointPeripheral.logger.debug("Unhandled characteristic \(characteristic.uuid)")

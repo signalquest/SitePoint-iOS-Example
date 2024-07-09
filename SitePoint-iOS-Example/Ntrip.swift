@@ -151,7 +151,7 @@ class Ntrip: NSObject, StreamDelegate {
             let basicAuth = Data(authString.utf8).base64EncodedString()
             let serverRequest = "GET \(service.mountpoint) HTTP/1.1\r\nHost: \(service.server)\r\nAccept: */*\r\nUser-Agent: SignalQuest NTRIP Client/1.0\r\nAuthorization: Basic \(basicAuth)\r\nConnection: close\r\n\r\n"
             let data = serverRequest.data(using: .utf8)!
-            Ntrip.logger.trace("requestAiding data: \(String(decoding: data, as: UTF8.self))")
+            Ntrip.logger.warning("requestAiding data: \(String(decoding: data, as: UTF8.self))")
             data.withUnsafeBytes {
                 guard let pointer = $0.baseAddress?.assumingMemoryBound(to: UInt8.self) else {
                     displayError("Error creating NTRIP aiding server request")
@@ -211,21 +211,36 @@ class Ntrip: NSObject, StreamDelegate {
                         case .active:
                             // results handled by handleRtcm
                             Ntrip.logger.debug("Parsing incoming RTCM")
-                            parser.parseRtcm(aStream as! InputStream)
+                            let parsed = parser.parseRtcm(aStream as! InputStream)
+                            if parsed < 0 {
+                                // Unexpected condition; please contact SignalQuest with the `parsed` value
+                                displayError("Parsing RTCM failed with \(parsed)")
+                            }
                         default:
                             handleOtherResponse(stream: aStream as! InputStream)
-                }
-            case Stream.Event.errorOccurred:
-                if let anError = aStream.streamError {
-                    displayError("NTRIP input stream error occurred: \(anError.localizedDescription)")
-                    // Try to reconnect if we were disconnected while active
-                    if let disconnectedService = ntripService {
-                        disconnect()
-                        connect(service: disconnectedService)
                     }
-                }
-            default:
-                break
+                case Stream.Event.endEncountered:
+                    switch state {
+                        case .req_aiding:
+                            displayError("NTRIP stream ended while authorizating")
+                            disconnect()
+                        case .active:
+                            displayError("NTRIP stream ended while authorized")
+                            disconnect()
+                        default:
+                            handleOtherResponse(stream: aStream as! InputStream)
+                    }
+                case Stream.Event.errorOccurred:
+                    if let anError = aStream.streamError {
+                        displayError("NTRIP input stream error occurred: \(anError.localizedDescription)")
+                        // Try to reconnect if we were disconnected while active
+                        if let disconnectedService = ntripService {
+                            disconnect()
+                            connect(service: disconnectedService)
+                        }
+                    }
+                default:
+                    break
             }
         }
     }
