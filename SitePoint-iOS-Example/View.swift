@@ -115,7 +115,7 @@ struct StatusSection: View {
                 Row("mode", status.mode)
                 Row("modeLabel", status.modeLabel)
                 Row("aidingQuality", status.aidingQuality.map{ $0 ? 1 : 0 })
-            }.frame(minHeight: minRowHeight * 8)
+            }.frame(minHeight: minRowHeight * 9)
                 .listStyle(.plain)
                 .listRowInsets(EdgeInsets())
         }}}
