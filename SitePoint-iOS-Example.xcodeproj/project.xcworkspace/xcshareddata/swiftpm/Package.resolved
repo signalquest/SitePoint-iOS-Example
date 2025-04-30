@@ -6,8 +6,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/signalquest/SitePoint-iOS-SDK",
       "state" : {
-        "revision" : "41541ce1673d4d72f3e15f63d71d5f9faa4577cc",
-        "version" : "1.2.0"
+        "revision" : "0c684c13f4951f8c6097ae06a9b329a1e125893d",
+        "version" : "1.2.1"
       }
     }
   ],

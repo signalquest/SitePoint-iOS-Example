@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C87607092C3E0090006A89C9 /* SitePointSdk in Frameworks */ = {isa = PBXBuildFile; productRef = C87607082C3E0090006A89C9 /* SitePointSdk */; };
+		C85FDAA52DC295E900D38D5A /* SitePointSdk in Frameworks */ = {isa = PBXBuildFile; productRef = C85FDAA42DC295E900D38D5A /* SitePointSdk */; };
 		DEBBE87B2A97E7740018D8D8 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBBE8742A97E7740018D8D8 /* View.swift */; };
 		DEBBE87C2A97E7740018D8D8 /* NtripGga.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBBE8752A97E7740018D8D8 /* NtripGga.swift */; };
 		DEBBE87D2A97E7740018D8D8 /* SitePoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBBE8762A97E7740018D8D8 /* SitePoint.swift */; };
@@ -37,7 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C87607092C3E0090006A89C9 /* SitePointSdk in Frameworks */,
+				C85FDAA52DC295E900D38D5A /* SitePointSdk in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -121,7 +121,7 @@
 			);
 			name = "SitePoint-iOS-Example";
 			packageProductDependencies = (
-				C87607082C3E0090006A89C9 /* SitePointSdk */,
+				C85FDAA42DC295E900D38D5A /* SitePointSdk */,
 			);
 			productName = "SitePoint-iOS-Example";
 			productReference = DE72D7B92A6F06A900C8FECB /* SitePoint-iOS-Example.app */;
@@ -153,7 +153,7 @@
 			);
 			mainGroup = DE72D7B02A6F06A900C8FECB;
 			packageReferences = (
-				C87607072C3E0090006A89C9 /* XCRemoteSwiftPackageReference "SitePoint-iOS-SDK" */,
+				C85FDAA32DC295E900D38D5A /* XCRemoteSwiftPackageReference "SitePoint-iOS-SDK" */,
 			);
 			productRefGroup = DE72D7BA2A6F06A900C8FECB /* Products */;
 			projectDirPath = "";
@@ -314,7 +314,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
@@ -341,7 +341,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.0;
+				MARKETING_VERSION = 1.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.your-domain.your-app-name";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -362,7 +362,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
@@ -386,7 +386,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.0;
+				MARKETING_VERSION = 1.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.your-domain.your-app-name";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -422,20 +422,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		C87607072C3E0090006A89C9 /* XCRemoteSwiftPackageReference "SitePoint-iOS-SDK" */ = {
+		C85FDAA32DC295E900D38D5A /* XCRemoteSwiftPackageReference "SitePoint-iOS-SDK" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/signalquest/SitePoint-iOS-SDK";
 			requirement = {
 				kind = upToNextMinorVersion;
-				minimumVersion = 1.2.0;
+				minimumVersion = 1.2.1;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		C87607082C3E0090006A89C9 /* SitePointSdk */ = {
+		C85FDAA42DC295E900D38D5A /* SitePointSdk */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = C87607072C3E0090006A89C9 /* XCRemoteSwiftPackageReference "SitePoint-iOS-SDK" */;
+			package = C85FDAA32DC295E900D38D5A /* XCRemoteSwiftPackageReference "SitePoint-iOS-SDK" */;
 			productName = SitePointSdk;
 		};
 /* End XCSwiftPackageProductDependency section */
